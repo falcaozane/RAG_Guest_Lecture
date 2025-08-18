@@ -1,5 +1,4 @@
 # RAG Guest Lecture
-[![Ask DeepWiki](https://devin.ai/assets/askdeepwiki.png)](https://deepwiki.com/Rudalph/RAG_Guest_Lecture/tree/main)
 
 This repository contains the code and resources for a guest lecture on Retrieval-Augmented Generation (RAG). It includes three distinct implementations of a question-answering system that uses a local PDF document as its knowledge base.
 
