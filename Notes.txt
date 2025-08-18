@@ -1,0 +1,16 @@
+1. Set up virtual environment
+
+    pip install virtualenv
+    python -m venv env
+    .\env\Scripts\activate
+    deactivate
+
+2. Create gitignore file and add virtual environment to install
+ 
+    /env
+
+3. Create Data folder in your project and add pdf's in it
+
+4. Create app.py file and implement your RAG pipeline
+
+5. https://frcrce-rag.vercel.app/
