@@ -149,6 +149,73 @@ print("Embedding shape:", embeddings.shape)
 ```
 ---
 
+## How to write prompt templates
+
+---
+
+Structuring prompt templates for **RAG (Retrieval-Augmented Generation)** applications is critical because it determines how well your LLM uses retrieved context to answer queries. 
+
+***
+
+### ✅ **Key Principles for RAG Prompt Templates**
+
+1.  **Separate Roles Clearly**
+    *   Define **system instructions**, **context**, and **user query** explicitly.
+    *   Example sections:
+        *   **Instruction**: What the model should do (e.g., “Answer based on context only.”)
+        *   **Context**: Insert retrieved documents here.
+        *   **Query**: The user’s question.
+
+2.  **Provide Explicit Guidance**
+    *   Tell the model how to handle missing info:  
+        *“If the answer is not in the context, say ‘I don’t know.’”*
+    *   Avoid hallucinations by reinforcing:  
+        *“Do not use outside knowledge.”*
+
+3.  **Use Placeholders for Dynamic Content**
+    *   Example:
+            [INSTRUCTION]: You are an assistant that answers based on provided context.
+            [CONTEXT]: {retrieved_docs}
+            [QUERY]: {user_question}
+
+4.  **Keep Context Manageable**
+    *   Use chunking + summarization if documents are large.
+    *   Consider token limits when designing templates.
+
+5.  **Add Output Constraints**
+    *   Specify format:  
+        *“Answer in bullet points”* or *“Provide a concise summary under 100 words.”*
+
+***
+
+### ✅ **Common RAG Prompt Template Structure**
+
+    System: You are a helpful assistant. Use only the provided context to answer.
+    Context:
+    {retrieved_docs}
+
+    Question:
+    {user_query}
+
+    Instructions:
+    - If the answer is not in the context, say "I don't know."
+    - Be concise and accurate.
+
+***
+
+### ✅ **Variants for Different Use Cases**
+
+*   **Summarization RAG**:
+        Summarize the following context in 3 bullet points:
+        {retrieved_docs}
+*   **Conversational RAG**:
+        Based on the context below, answer the user's question naturally:
+        Context: {retrieved_docs}
+        Question: {user_query}
+
+***
+
+
 
 
 
