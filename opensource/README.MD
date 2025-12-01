@@ -32,6 +32,11 @@ https://medium.com/data-and-beyond/document-loaders-in-langchain-f23d3ce70d66
 | **LatexTextSplitter**              | Splits LaTeX documents while respecting LaTeX commands and environments.                                                                          | Designed for academic/scientific papers written in LaTeX.                                                 |
 
 ***
+---
 
+## Prompt templates 
+
+https://medium.com/data-and-beyond/prompts-in-langchain-with-examples-0fb30be66b81
+---
 
 
