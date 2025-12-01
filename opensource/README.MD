@@ -40,3 +40,40 @@ https://medium.com/data-and-beyond/prompts-in-langchain-with-examples-0fb30be66b
 ---
 
 
+## ChromaDB 
+
+1. Maximal Marginal Relevance (MMR) search
+Instead of just returning the most relevant documents, MMR finds documents that are both relevant to the query and diverse among themselves. This helps prevent your results from being filled with near-duplicate information. 
+When to use it: Use MMR when you want to avoid redundancy in your search results. For example, if you are searching for "AI applications" and want to retrieve documents covering different aspects like "generative AI" and "computer vision," MMR will help you get a wider range of results.
+
+```
+python
+
+docs_mmr = langchain_chroma.max_marginal_relevance_search(question, k=5)
+
+```
+
+2. Similarity Search
+Similarity search finds the documents whose vector embeddings are closest to the query's vector embedding in a high-dimensional space. It is a straightforward approach that prioritizes the most relevant content, but it has one key drawback: if your vector store contains many documents covering the same topic, the search may return redundant information. 
+Under the hood: The search relies on a distance metric, most commonly cosine similarity, which measures the angle between the document and query vectors. A smaller angle means greater similarity.
+Example scenario: If your dataset contains three paragraphs about a specific type of AI, like "generative AI," a similarity search for the query "What is generative AI?" will likely return all three paragraphs because they are mathematically the most similar. 
+
+```
+python
+docs_pdf = langchain_chroma.similarity_search(question,k=5)
+```
+---
+
+
+| **Use Case**          | **When to use `similarity_search`**                                                              | **When to use `MMR` (Maximal Marginal Relevance)**                                                                   |
+| --------------------- | ------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------- |
+| **Summarization**     | Generate a short, focused summary based on the most relevant information.                        | Generate a comprehensive summary that covers a broader range of topics related to the query.                         |
+| **Conversational AI** | User asks a very specific, unambiguous question with a single correct answer.                    | User’s query is broad or complex; ensure the chatbot considers all relevant facets before responding.                |
+| **Product Search**    | Return the most popular and highly rated models first (e.g., “running shoes”).                   | Show a variety of options to cover different aspects (e.g., “fresh red tomatoes,” “canned diced,” “organic cherry”). |
+| **General Search**    | Find documents that are the closest semantic match, even if they are very similar to each other. | Explore different aspects of a topic without being overwhelmed by redundant information.                             |
+
+***
+
+
+
+
