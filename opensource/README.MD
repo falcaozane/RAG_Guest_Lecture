@@ -2,6 +2,13 @@
 
 https://www.kaggle.com/code/zanefalcao/rag-using-open-source-llm-s
 
+```
+bash
+
+!pip install langchain langchain-community langchain-core transformers sentence_transformers langchain-huggingface pypdf chromadb
+
+```
+
 
 ## Text Splitters
 
