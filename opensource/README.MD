@@ -2,8 +2,7 @@
 
 https://www.kaggle.com/code/zanefalcao/rag-using-open-source-llm-s
 
-```
-bash
+```bash
 
 !pip install langchain langchain-community langchain-core transformers sentence_transformers langchain-huggingface pypdf chromadb
 
@@ -46,8 +45,7 @@ https://medium.com/data-and-beyond/prompts-in-langchain-with-examples-0fb30be66b
 Instead of just returning the most relevant documents, MMR finds documents that are both relevant to the query and diverse among themselves. This helps prevent your results from being filled with near-duplicate information. 
 When to use it: Use MMR when you want to avoid redundancy in your search results. For example, if you are searching for "AI applications" and want to retrieve documents covering different aspects like "generative AI" and "computer vision," MMR will help you get a wider range of results.
 
-```
-python
+```python
 
 docs_mmr = langchain_chroma.max_marginal_relevance_search(question, k=5)
 
@@ -58,8 +56,8 @@ Similarity search finds the documents whose vector embeddings are closest to the
 Under the hood: The search relies on a distance metric, most commonly cosine similarity, which measures the angle between the document and query vectors. A smaller angle means greater similarity.
 Example scenario: If your dataset contains three paragraphs about a specific type of AI, like "generative AI," a similarity search for the query "What is generative AI?" will likely return all three paragraphs because they are mathematically the most similar. 
 
-```
-python
+```python
+
 docs_pdf = langchain_chroma.similarity_search(question,k=5)
 ```
 ---
