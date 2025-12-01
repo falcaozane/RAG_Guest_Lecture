@@ -9,6 +9,14 @@ bash
 
 ```
 
+---
+
+## Document Loaders:
+
+https://medium.com/data-and-beyond/document-loaders-in-langchain-f23d3ce70d66
+
+---
+
 
 ## Text Splitters
 
