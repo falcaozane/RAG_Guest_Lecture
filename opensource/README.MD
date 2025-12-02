@@ -168,22 +168,6 @@ response_rag = rag_chain.invoke(question_rag)
 print(response_rag)
 ```
 
-
-Pipeline
-Pipeline * The Pipeline is a simple but powerful inference API that is readily available for a variety of machine learning tasks
-
-Hugging Face·HuggingFace
-
-4:36
-HuggingFacePipeline — LangChain documentation
-inputs (Sequence[Input]) – A list of inputs to the Runnable. config (RunnableConfig | Sequence[RunnableConfig] | None) – A config ...
-
-LangChain
-Pipelines - Hugging Face
-transformers. pipeline * task ( str ) — The task defining which pipeline will be returned. Currently accepted tasks are: "audio-cl...
-
-Hugging Face
-
 ---
 
 ## Prompt templates :
