@@ -75,6 +75,115 @@ https://medium.com/data-and-beyond/document-loaders-in-langchain-f23d3ce70d66
 | **LatexTextSplitter**              | Splits LaTeX documents while respecting LaTeX commands and environments.                                                                          | Designed for academic/scientific papers written in LaTeX.                                                 |
 
 ***
+
+The HuggingFacePipeline class in LangChain allows you to load and use any model from the Hugging Face Model Hub that is compatible with the transformers library's pipeline function. This is particularly useful for running models locally and offers more customization than simply using a hosted API. 
+How to use HuggingFacePipeline
+Install necessary libraries: Make sure you have the transformers, torch, and langchain-community packages installed.
+```bash
+pip install transformers torch langchain-community
+```
+
+
+Set up the transformers pipeline: Before creating the LangChain HuggingFacePipeline, you first create a transformers pipeline. This involves specifying the task (e.g., "text-generation", "text2text-generation", "summarization") and the model you want to use.
+
+```python
+
+from transformers import AutoTokenizer, AutoModelForCausalLM, pipeline
+import torch
+
+# Load tokenizer and model
+model_name = "distilbert/distilgpt2"
+tokenizer = AutoTokenizer.from_pretrained(model_name)
+model = AutoModelForCausalLM.from_pretrained(model_name, torch_dtype=torch.bfloat16)
+
+# Create the transformers pipeline
+hf_pipeline = pipeline(
+    "text-generation",
+    model=model,
+    tokenizer=tokenizer,
+    max_new_tokens=100,
+    pad_token_id=tokenizer.eos_token_id,
+    temperature=0.7,
+)
+
+```
+
+Note: Use a smaller model like distilgpt2 for a simple demonstration on a CPU. For more capable models, you will need a GPU.
+Integrate with LangChain: Pass your configured transformers pipeline to the HuggingFacePipeline class from langchain_community.llms.
+
+```python
+from langchain_community.llms import HuggingFacePipeline
+
+llm = HuggingFacePipeline(pipeline=hf_pipeline)
+Use code with caution.
+
+Invoke the LLM: You can now use the llm object to invoke the model with a prompt, which will generate text based on the task you configured in the pipeline.
+python
+# Invoke the LLM with a prompt
+question = "What are the benefits of using LangChain?"
+response = llm.invoke(question)
+print(response)
+```
+
+The output will be the generated text, which you can then incorporate into larger LangChain applications, such as a retrieval-augmented generation (RAG) system with Chroma. 
+Key parameters for HuggingFacePipeline
+The HuggingFacePipeline constructor takes a pipeline argument. Any parameters related to model behavior, such as generation settings, should be set when you initialize the transformers pipeline. 
+model_name: The specific Hugging Face model you want to use.
+task: The task for which the pipeline is initialized (e.g., "text-generation").
+model_kwargs: A dictionary of keyword arguments passed to the model's from_pretrained function.
+pipeline_kwargs: A dictionary of keyword arguments passed to the transformers.pipeline function.
+device: The device to run the model on (-1 for CPU, 0 for GPU, etc.). device_map="auto" can automatically distribute the model across available hardware. 
+Integrating with RAG and ChromaDB
+In a RAG application, you can use HuggingFacePipeline as the final large language model (LLM) that answers a user's query. 
+Here is an example of a simple LangChain chain that uses ChromaDB for retrieval and HuggingFacePipeline for generation:
+
+```python
+from langchain_community.vectorstores import Chroma
+from langchain_core.prompts import PromptTemplate
+from langchain_core.runnables import RunnablePassthrough
+from langchain_core.output_parsers import StrOutputParser
+
+# Assuming hg_embeddings and langchain_chroma are already created from your previous steps
+# This code snippet would come after your embedding and Chroma setup
+
+# Define a retrieval-augmented prompt
+template = """Answer the question based only on the following context:
+{context}
+
+Question: {question}
+"""
+prompt = PromptTemplate.from_template(template)
+
+# Create a retrieval chain
+rag_chain = (
+    {"context": langchain_chroma.as_retriever(), "question": RunnablePassthrough()}
+    | prompt
+    | llm
+    | StrOutputParser()
+)
+
+# Run the chain with a question
+question_rag = "What is the document about according to the provided text?"
+response_rag = rag_chain.invoke(question_rag)
+print(response_rag)
+
+
+
+Pipeline
+Pipeline * The Pipeline is a simple but powerful inference API that is readily available for a variety of machine learning tasks
+
+Hugging Face·HuggingFace
+
+4:36
+HuggingFacePipeline — LangChain documentation
+inputs (Sequence[Input]) – A list of inputs to the Runnable. config (RunnableConfig | Sequence[RunnableConfig] | None) – A config ...
+
+LangChain
+Pipelines - Hugging Face
+transformers. pipeline * task ( str ) — The task defining which pipeline will be returned. Currently accepted tasks are: "audio-cl...
+
+Hugging Face
+
 ---
 
 ## Prompt templates :
