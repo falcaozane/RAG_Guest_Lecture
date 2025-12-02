@@ -312,6 +312,8 @@ Structuring prompt templates for **RAG (Retrieval-Augmented Generation)** applic
 
 https://www.linkedin.com/posts/sid-k09_rag-ragas-groq-ugcPost-7392244341928431616-DNWe?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD0zMtABUGsox_1EgbtjnbpKhK1MYC9MGiQ
 
+https://www.linkedin.com/posts/abhishek-gautam-se_%F0%9D%97%A6%F0%9D%98%81%F0%9D%97%BC%F0%9D%97%BD-%F0%9D%97%B4%F0%9D%98%82%F0%9D%97%B2%F0%9D%98%80%F0%9D%98%80%F0%9D%97%B6%F0%9D%97%BB%F0%9D%97%B4-%F0%9D%97%A6%F0%9D%98%81%F0%9D%97%AE%F0%9D%97%BF%F0%9D%98%81-%F0%9D%97%BA%F0%9D%97%B2%F0%9D%97%AE%F0%9D%98%80%F0%9D%98%82%F0%9D%97%BF%F0%9D%97%B6%F0%9D%97%BB%F0%9D%97%B4-ugcPost-7393636265889472513-0xCi?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD0zMtABUGsox_1EgbtjnbpKhK1MYC9MGiQ
+
 
 
 
