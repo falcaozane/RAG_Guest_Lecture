@@ -166,7 +166,7 @@ rag_chain = (
 question_rag = "What is the document about according to the provided text?"
 response_rag = rag_chain.invoke(question_rag)
 print(response_rag)
-
+```
 
 
 Pipeline
