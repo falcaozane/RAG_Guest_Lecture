@@ -308,6 +308,10 @@ Structuring prompt templates for **RAG (Retrieval-Augmented Generation)** applic
 
 ***
 
+## RAGAS
+
+https://www.linkedin.com/posts/sid-k09_rag-ragas-groq-ugcPost-7392244341928431616-DNWe?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD0zMtABUGsox_1EgbtjnbpKhK1MYC9MGiQ
+
 
 
 
